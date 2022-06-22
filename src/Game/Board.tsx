@@ -8,7 +8,8 @@ const INITIAL_STATE = new Array(9).fill("");
 
 export function Board() {
     const id = localStorage.getItem("id");
-    const char = localStorage.getItem("char");
+    const char = localStorage.getItem("char"); 
+    const player = localStorage.getItem("user");
     const history = useNavigate();
     const [squares, setSquares] = useState<(string | null)[]>(INITIAL_STATE);
     //0 = playing, 1 = draw , 2 = xwon , 3 = owon
@@ -25,7 +26,8 @@ export function Board() {
                 await fill({
                     index,
                     id,
-                    char
+                    char,
+                    player
                 })
                 draft[i] = char;
                 setSquares(draft);

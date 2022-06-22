@@ -61,7 +61,7 @@ export async function logout(): Promise<void> {
 function setCurrentToken(token: string) {
   localStorage.setItem("token", token)
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  axios.defaults.headers.common.Authorization = "bearer " + token
+  axios.defaults.headers.common.Authorization = "Bearer " + token
 }
 
 // Valores almacenados en LOCAL STORE
@@ -97,7 +97,7 @@ if (getCurrentToken()) {
   const currentToken = getCurrentToken()
   if (currentUser !== undefined && currentToken !== undefined) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    axios.defaults.headers.common.Authorization = "bearer " + currentToken
+    axios.defaults.headers.common.Authorization = "Bearer " + currentToken
     updateSessionToken(currentToken)
     updateSessionUser(currentUser)
     void reloadCurrentUser({token: currentToken}).then()

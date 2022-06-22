@@ -17,20 +17,16 @@ export interface User {
     name: string
 }
 
-function getCurrentUser() {
-    const result = localStorage.getItem("user");
-    return result;
-}
-
 export function Room() {
 
     const history = useNavigate()
     const [name, setName] = useState("")
 
     const errorHandler = useErrorHandler()
-    const user = getCurrentUser()
+    
+
     const createClick = async () => {
-        const player1 = user
+        const player1 = localStorage.getItem("user");
         try {
             await create({
                 name,
@@ -43,7 +39,7 @@ export function Room() {
     }
 
     const joinClick = async () => {
-        const player2 = user
+        const player2 = localStorage.getItem("user");
         try {
             await join({
                 name,

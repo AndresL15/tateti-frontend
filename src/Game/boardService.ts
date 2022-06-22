@@ -40,6 +40,7 @@ export async function fill(params: {
   index: string
   id: string | null
   char: string | null
+  player: string | null
 }): Promise<Game> {
   const res = (await axios.post(environment.backendUrl + "/fill", params))
   .data as Game
